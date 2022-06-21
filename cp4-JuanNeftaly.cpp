@@ -2,6 +2,9 @@
 
 using namespace std;
 
+float costoInternetFijo(float saldo, float pagoPersonalizadoResidencial);
+float costoInterMovil(float saldo, float pagoMovilPersonalizado);
+
 int main()
 {
     int opcion;
@@ -10,7 +13,7 @@ int main()
     int deposito;
     float saldoFinal;
     int servicio;
-    string nombre;
+    string nombre; 
     float costoInterFijo = 44.50;
     float totalInterFijo;
     float costoMovil = 15.99;
@@ -18,13 +21,16 @@ int main()
     float abonoInterFijo;
     float abonoInterMovil; 
     float restaAbono;
+
+    float Personal;
+    float Residencial;
     
 
     cout << "Bienvenido al servicio al cliente en linea de Movistar. Por favor, ingrese su nombre " << endl;
     cin >> nombre;
     cout << "Cuanto dinero tiene en su cuenta " << nombre << "?" << endl;
     cin >> saldo;
-    cout << "Ingresa una opcion:  1: Estado de cuenta - 2: Abonar a cuota - 3: Deposito a cuenta, 4 - Pago de internet " << endl;
+    cout << "Ingresa una opcion:  1: Estado de cuenta - 2: Abonar a cuota - 3: Pago de internet " << endl;
     cin >> opcion;
 
     switch (opcion)
@@ -62,53 +68,33 @@ int main()
             break;
         }
     case 3:
-        // Deposito de cuenta 
-        cout << "Que cantidad deseas depositar " << nombre << "?" << endl;
-        cin >> deposito;
-        saldoFinal = saldo + deposito;
-        cout << "Su saldo actual es: " << saldoFinal;
-        break;
-    case 4:
         /* pagar servicios */
         cout << "Que servicios deseas pagar? Selecciona uno: 1 - Internet residencial, 2 - Internet movil " << endl; 
         cin >> servicio;
 
-        switch (servicio)
+        switch(servicio)
         {
-        case 1:
-            // INTERNET RESIDENCIAL
-            cout << "Usted ha elegido pagar el internet residencial " << endl;
-            totalInterFijo = saldo - costoInterFijo;
-            
-           if (saldo >= costoInterFijo)
-        {
-            cout << "Su saldo actual " << nombre << " ,es: " << totalInterFijo << endl;
-        }
-        else if (costoInterFijo > saldo)
-        {
-            cout << "No es posible hacer la transferencia" << nombre << ", intentelo de nuevo" << endl;
-        }
+            case 1:
+            cout<<"Cuanto dinero va a pagar de Internet residencial "<<endl; 
+            cin >> saldo;
+            cout<<"Cuanto dinero pagas de internet residencial "<<endl; 
+            cin >> Residencial;
+
+
+            cout << " Su cuenta ha sido pagada " << endl; 
 
             break;
-        case 2:
-            // INTERNET MOVIL
-            cout << "Usted ha elegido pagar su internet movil " << endl;
-            totalMovil = saldo - costoMovil;
-            
-            if (saldo >= costoMovil)
-            {
-                cout << "Su saldo actual " << nombre << " es " << totalMovil << endl;
-                cout << "Muchas gracias por su preferencia, feliz dia " << endl; 
-            }
-            else if (costoMovil > saldo)
-            {
-                cout << "No es posible hacer la transferencia " << nombre << " ,intentelo de nuevo" << endl;
-            }
 
-            break;
-        default:
-            cout << "Esa opcion no existe, intentelo de nuevo " << endl;
-            break;
+            case 2:
+            cout<<"Cuanto dinero va a pagar de Internet Movil "<<endl;
+            cin>>saldo; 
+            cout<<"Cuanto dinero pagas de internet movil "<<endl; 
+            cin>>Personal;
+
+
+            cout << " Su cuenta ha sido pagada " << endl; 
+
+            break; 
         }
     default:
         cout << "Esa opcion no esta disponible, intentelo de nuevo " << endl;
@@ -116,4 +102,18 @@ int main()
     }
 
     return 0;
+}
+float costoInternetFijo(float saldo, float pagoPersonalizadoResidencial);
+{
+    float costoTotalFijo;
+    costoTotalFijo = saldo - pagoPersonalizadoResidencial;
+
+    return costoTotalFijo;
+}
+float costoInterMovil(float saldo, float pagoMovilPersonalizado);
+{
+    float costoTotalInterMovil; 
+    costoTotalInterMovil = saldo - pagoMovilPersonalizado;
+
+    return costoTotalInterMovil; 
 }
