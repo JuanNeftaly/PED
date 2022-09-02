@@ -2,6 +2,7 @@
 
 using namespace std;
 
+
 float costoInternetFijo(float saldo, float pagoPersonalizadoResidencial);
 float costoInterMovil(float saldo, float pagoMovilPersonalizado);
 
@@ -24,7 +25,6 @@ int main()
 
     float Personal;
     float Residencial;
-    
 
     cout << "Bienvenido al servicio al cliente en linea de Movistar. Por favor, ingrese su nombre " << endl;
     cin >> nombre;
@@ -103,14 +103,15 @@ int main()
 
     return 0;
 }
-float costoInternetFijo(float saldo, float pagoPersonalizadoResidencial);
+
+float costoInternetFijo(float saldo, float pagoPersonalizadoResidencial)
 {
     float costoTotalFijo;
     costoTotalFijo = saldo - pagoPersonalizadoResidencial;
 
     return costoTotalFijo;
 }
-float costoInterMovil(float saldo, float pagoMovilPersonalizado);
+float costoInterMovil(float saldo, float pagoMovilPersonalizado)
 {
     float costoTotalInterMovil; 
     costoTotalInterMovil = saldo - pagoMovilPersonalizado;
